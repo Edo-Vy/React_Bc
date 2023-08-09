@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 export default class DataBiding extends Component {
-  // Thuộc tính : ko kb var, let, const . Nằm trong lớp đối tượng databiding
+  // Thuộc tính : ko kb var, let, const . Nằm trong lớp đối tượng databiding, có thể sử dụng ở nhiều phương thức khác
   product = {
     id: 1,
     name: "product 1",
@@ -11,6 +11,7 @@ export default class DataBiding extends Component {
   };
   // Phương thức
   renderCardProduct = () => {
+      // Nội dung render phải là string, boolen, number hoặc jsx ( có thẻ bao phủ )
     return (
       <div className="card">
         <img src={this.product.img} alt="" />
