@@ -4,16 +4,24 @@ import DemoFuncCom from './Components/DemoFunCom/DemoFuncCom';
 import DemoClassCom from './Components/DemoFunCom/DemoClassCom';
 import DataBiding from './DataBiding/DataBiding';
 import BaiTapLayout from './Components/BaiTapLayout/BaiTapLayout';
+import HandleEvent from './Components/HandleEvent/HandleEvent';
+import StyleWithJSX from './Components/StyleWithJSX/StyleWithJSX';
+import StateDemo from './Components/StateDemo/StateDemo/StateDemo';
+import BaiTapChonXe from './Components/StateDemo/BaiTapChonXe/BaiTapChonXe';
 
 function App() {
   return (
     <div className="App">
-      <BaiTapLayout></BaiTapLayout>
+      {/* <BaiTapLayout></BaiTapLayout> */}
       {/* <DemoFuncCom />
       <div className='w-25'>
         <DemoClassCom></DemoClassCom>
       </div> */}
-      <DataBiding></DataBiding>
+      {/* <DataBiding></DataBiding> */}
+      {/* <HandleEvent></HandleEvent> */}
+      {/* <StyleWithJSX></StyleWithJSX> */}
+      <StateDemo></StateDemo>
+   
     </div>
   );
 }
