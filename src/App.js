@@ -10,6 +10,8 @@ import StateDemo from './Components/StateDemo/StateDemo/StateDemo';
 import BaiTapChonXe from './Components/StateDemo/BaiTapChonXe/BaiTapChonXe';
 import RenderWithMap from './Components/RenderWithMap/RenderWithMap';
 import LayoutFilm from './Components/RenderWithMap/LayoutFilm';
+import DemoProps from './Props/DemoProps/DemoProps';
+import ShoesShop from './Props/ShoesShop/ShoesShop';
 
 function App() {
   return (
@@ -24,7 +26,9 @@ function App() {
       {/* <StyleWithJSX></StyleWithJSX> */}
       {/* <StateDemo></StateDemo> */}
       {/* <RenderWithMap></RenderWithMap> */}
-      <LayoutFilm></LayoutFilm>
+      {/* <LayoutFilm></LayoutFilm> */}
+      {/* <DemoProps></DemoProps> */}
+      <ShoesShop></ShoesShop>
    
     </div>
   );
