@@ -1,5 +1,6 @@
 //rcc
 import React, { Component } from "react";
+import '../../assets/scss/style.scss';
 
 const data = [
   {
@@ -162,15 +163,17 @@ export default class LayoutFilm extends Component {
   renderFilm = () => {
     return data.map((films, index) => {
       return (
-        <div className="col-3" key={index}>
-          <div className="card" width={18}>
+        // key : các thẻ đồng cấp
+        <div className="col-3 mt-3 card__wrap" key={index}> 
+          <div className="card">
             <div className=" card car__img card-img-top">
               <img src= {films.hinhAnh} alt="" />
             </div>
             <div className="card-body">
-              <h3 className="card-title">{films.tenPhim}</h3>
-              <p className="card-text">
-               {films.moTa}
+              <h3 className="card-title" style={{height:75}}>{films.tenPhim}</h3>
+              <p className="card-text" style={{height :80}}>
+                {/* Toán tử 3 ngôi : .length > 100 ? films.moTa.slice(0,100) + "...." : films.moTa */}
+               {films.moTa.length > 100 ? films.moTa.slice(0,100) + "..." : films.moTa}
               </p>
             </div>
           </div>
@@ -180,9 +183,11 @@ export default class LayoutFilm extends Component {
   };
   render() {
     return (
-      <div style={{background:'url(./img/avenger.jpg',minHeight:'100vh', backgroundPosition:'right bottom',backgroundSize:'cover'}}>
-        <div className="header" >
-          <nav className="navbar navbar-expand-sm navbar-dark bg-primary">
+      // Cách 1: style trực tiếp <div style={{background:'url(./img/avenger.jpg',minHeight:'100vh', backgroundPosition:'right bottom',backgroundSize:'cover'}}>
+      // Cách 2 : import scss
+      <div className="bg-films">
+        <div className="header h-100" style={{background : 'rgba(0,0,0,.5)', minHeight:'100vh'}} >
+          <nav className="navbar navbar-expand-sm navbar-dark" style={{background: 'rgba(255,0,255,.2)'}}>
             <a className="navbar-brand" href="#">
               Cyber Learn Movie
             </a>
@@ -204,7 +209,7 @@ export default class LayoutFilm extends Component {
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">
-                    Film
+                    Films
                   </a>
                 </li>
                 <li className="nav-item dropdown">
@@ -243,14 +248,15 @@ export default class LayoutFilm extends Component {
               </form>
             </div>
           </nav>
-        </div>
-        <div className="container">
-          <div className="main">
+          <div className="layout-films  h-100">
+          <div className="main" >
             <div className="row mx-2">
                 {this.renderFilm()}
             </div>
           </div>
         </div>
+        </div>
+        
       </div>
     );
   }
