@@ -76,9 +76,17 @@ export default class FormProduct extends Component {
     // Chặn sự kiện reload của browser (mỗi khi click hay enter)
     event.preventDefault();
     // click || enter lấy dữ liệu qua state
-    console.log(this.state);
+    // console.log(this.state);
+
+    // Khi người dùng bấm nút submit => gửi dữ liệu người dùng nhập từ state => ra hàm addProduct
+    this.props.addProduct(this.state.prodInfo);  
+
   };
+
+  
+
   render() {
+      
     return (
       <form className="card" onSubmit={this.handleSubmit}>
         <div className="card-header bg-dark text-warning">Create Product</div>

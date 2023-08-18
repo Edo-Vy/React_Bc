@@ -45,7 +45,7 @@ export default class StateDemo extends Component {
   //     login: true,
   //   };
   //   /*
-  //     + this.setState là phương thức có sẵn cuae react class component,
+  //     + this.setState là phương thức có sẵn cuả react class component,
   //     + làm thay đổi giá trị state cũ đồng thời reder lại giao diện
   //     + setState là phương thức bất đồng bộ
   //    */
