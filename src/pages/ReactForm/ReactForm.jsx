@@ -79,4 +79,11 @@ export default class ReactForm extends Component {
       </div>
     );
   }
+  //  componentDidMount() ~ window.onload()
+  componentDidMount(){
+    // Hàm này sẽ thực thi sau khi nội dung được render
+    this.setState({
+      arrProduct : this.layStore()
+    })
+  }
 }

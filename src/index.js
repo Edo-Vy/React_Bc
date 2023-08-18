@@ -10,6 +10,7 @@ import Home from './pages/Home/Home.jsx';
 import About from './pages/About/About.jsx';
 import ReactForm from './pages/ReactForm/ReactForm';
 import Page404 from './pages/Page404/Page404';
+import ReactLifecycle from './pages/ReactLifecycle/ReactLifecycle';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -26,6 +27,7 @@ root.render(
         <Route path='contact' element={<Contact />}></Route>
         <Route path='about' element={<About />}></Route>
         <Route path='reactform' element={<ReactForm />}></Route>
+        <Route path='lifecycle' element={<ReactLifecycle/>}></Route>
         {/* Cách 1: tạo 1 trang 404  */}
         {/* <Route path='*' element={<Page404/>}></Route> */}
         {/* Cách 2: Dùng Navigate -> về trang chủ */}

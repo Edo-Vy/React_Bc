@@ -9,7 +9,7 @@ export default class FormProduct extends Component {
     // img: "",
     // proType: "mobile",
     // description: "",
-    // ---valid
+    // ---validation
     prodInfo: {
       id: "",
       name: "",
