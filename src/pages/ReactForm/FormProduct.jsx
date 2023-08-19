@@ -79,14 +79,23 @@ export default class FormProduct extends Component {
     // console.log(this.state);
 
     // Khi người dùng bấm nút submit => gửi dữ liệu người dùng nhập từ state => ra hàm addProduct
-    this.props.addProduct(this.state.prodInfo);  
-
+    this.props.addProduct(this.state.prodInfo);
   };
 
-  
+  // Can thiệp vào quá trình render props của Updating
+  // Khi bấm nút Edit không dữ liệu từ props để render ra giao diện nữa, mà sẽ lấy dữ liệu từ state nhưng sẽ can thiệp vào trước khi render
+  static getDerivedStateFromProps(newProps, currentState){
+ 
+    currentState.prodInfo = newProps.productEdit;
 
+    return {...currentState}
+  }
   render() {
-      
+    // let { productEdit } = this.props; // bị đè Updating
+    // let { productEdit } = this.state.prodInfo;
+    let {id,name,img,price,proType,description} = this.state.prodInfo;
+
+
     return (
       <form className="card" onSubmit={this.handleSubmit}>
         <div className="card-header bg-dark text-warning">Create Product</div>
@@ -95,12 +104,14 @@ export default class FormProduct extends Component {
             <div className="form-group">
               <p>Id</p>
               <input
+                // value={productEdit.id}
+                value={id}
                 className="form-control"
                 id="id"
                 name="id"
                 onInput={
                   this.handleChange
-                 /**
+                  /**
                    evnent(e) : sự kiện sử lý thao tác trả ra  className="form-control" id="id" name="id" thông qua target
                    console.log(event.target);
                    let value = event.target.value; // khi nhập liệu lấy ra value của thẻ
@@ -112,7 +123,7 @@ export default class FormProduct extends Component {
                     })
                    }} />
                */
-              /**
+                  /**
                   (event) => {let { value, id } = event.target; // bóc tách phần tử
                   this.setState({
                         [id]: value,
@@ -129,12 +140,14 @@ export default class FormProduct extends Component {
             <div className="form-group">
               <p>Name</p>
               <input
+                // value={productEdit.name}
+                value={name}
                 className="form-control"
                 id="name"
                 name="name"
                 onInput={
                   this.handleChange
-              /**
+                  /**
                    evnent(e) : sự kiện sử lý thao tác trả ra  className="form-control" id="id" name="id" thông qua target
                    console.log(event.target);
                    let value = event.target.value; // khi nhập liệu lấy ra value của thẻ
@@ -146,7 +159,7 @@ export default class FormProduct extends Component {
                     })
                    }} />
                */
-              /**
+                  /**
                   (event) => {let { value, id } = event.target; // bóc tách phần tử
                   this.setState({
                         [id]: value,
@@ -167,6 +180,8 @@ export default class FormProduct extends Component {
                   *  property : thuộc tính HTML có : value, id, name,.... khi ko khai báo nhưng DOM tới vẫn có thuộc tính đó
                */}
               <input
+                // value={productEdit.price}
+                value={price}
                 data-type="number"
                 className="form-control"
                 id="price"
@@ -180,6 +195,8 @@ export default class FormProduct extends Component {
             <div className="form-group">
               <p>Img</p>
               <input
+                // value={productEdit.img}
+                value={img}
                 className="form-control"
                 id="img"
                 name="img"
@@ -190,6 +207,8 @@ export default class FormProduct extends Component {
             <div className="form-group">
               <p>Product Type</p>
               <select
+                // value={productEdit.proType}
+                value={proType}
                 id="proType"
                 name="proType"
                 className="form-control"
@@ -203,6 +222,8 @@ export default class FormProduct extends Component {
             <div className="form-group" onInput={this.handleChange}>
               <p>Description</p>
               <textarea
+                // value={productEdit.description}
+                value={description}
                 className="form-control"
                 id="description"
                 name="description"

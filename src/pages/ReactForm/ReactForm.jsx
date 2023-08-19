@@ -23,6 +23,20 @@ export default class ReactForm extends Component {
         description: "product 2",
       },
     ],
+    proEdit: {
+      id: "",
+      name: "",
+      price: 0,
+      img: "",
+      proType: "",
+      description: "",
+    },
+  };
+
+  editProduct = (prodClick) => {
+    this.setState({
+      proEdit: prodClick,
+    });
   };
 
   addPro = async (newPro) => {
@@ -61,11 +75,9 @@ export default class ReactForm extends Component {
     localStorage.setItem("arrProduct", value);
   }
   // Lấy Local
-  layStore(){
-
-    if(localStorage.getItem('arrProduct')){
-
-      let arrProducts = JSON.parse(localStorage.getItem('arrProduct'));
+  layStore() {
+    if (localStorage.getItem("arrProduct")) {
+      let arrProducts = JSON.parse(localStorage.getItem("arrProduct"));
       return arrProducts;
     }
     return [];
@@ -74,16 +86,23 @@ export default class ReactForm extends Component {
     return (
       <div className="container">
         <h3>Product Management</h3>
-        <FormProduct addProduct={this.addPro} />
-        <TableProduct arrPro={this.state.arrProduct} arrDel={this.delPro} />
+        <FormProduct
+          addProduct={this.addPro}
+          productEdit={this.state.proEdit}
+        />
+        <TableProduct
+          arrPro={this.state.arrProduct}
+          arrDel={this.delPro}
+          editPro={this.editProduct}
+        />
       </div>
     );
   }
   //  componentDidMount() ~ window.onload()
-  componentDidMount(){
+  componentDidMount() {
     // Hàm này sẽ thực thi sau khi nội dung được render
     this.setState({
-      arrProduct : this.layStore()
-    })
+      arrProduct: this.layStore(),
+    });
   }
 }
