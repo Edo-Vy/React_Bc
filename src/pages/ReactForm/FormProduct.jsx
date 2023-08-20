@@ -84,17 +84,40 @@ export default class FormProduct extends Component {
 
   // Can thiệp vào quá trình render props của Updating
   // Khi bấm nút Edit không dữ liệu từ props để render ra giao diện nữa, mà sẽ lấy dữ liệu từ state nhưng sẽ can thiệp vào trước khi render
-  static getDerivedStateFromProps(newProps, currentState){
- 
-    currentState.prodInfo = newProps.productEdit;
+  /**
+   *  Khi người dùng chỉnh sửa
+   * this.props.productEdit => productEdit sẽ gán cho state -> sau đó giao diện lấy ra từ state
+   */
 
-    return {...currentState}
+  static getDerivedStateFromProps(newProps, currentState) {
+    // Khi bấm nút chỉnh sửa (edit)
+    /**  v-17 || onChange
+    *  if (newProps.productEdit.id !== currentState.prodInfo.id) {
+            currentState.prodInfo = newProps.productEdit;
+
+            return { ...currentState };
+         }
+         return null; // giữ lại state cũ
+    */
+    //  v-18 || onInput
+    currentState.prodInfo = newProps.productEdit;
+    return { ...currentState }; // hàm này sẽ tạo ra this.state mới
   }
+  /**
+   * Có 2 cách
+   * - Cách 1 : Dùng getDerivedStateFromProps
+   * - Cách 2 : Dùng  componentWillReceiveProps - của phiên bản react-dom 16 ( dùng lifecycle cũ)
+   */
+  // componentWillReceiveProps(newProps){
+  //   // Chỉ chạy khi props thay đổi
+  //   this.setState({
+  //     prodInfo: newProps.productEdit
+  //   })
+  // }
   render() {
     // let { productEdit } = this.props; // bị đè Updating
     // let { productEdit } = this.state.prodInfo;
-    let {id,name,img,price,proType,description} = this.state.prodInfo;
-
+    let { id, name, img, price, proType, description } = this.state.prodInfo;
 
     return (
       <form className="card" onSubmit={this.handleSubmit}>
@@ -234,7 +257,10 @@ export default class FormProduct extends Component {
         </div>
         <div className="card-footer">
           <button className="btn btn-success mx-3">Create</button>
-          <button type="button" className="btn btn-primary">
+          <button type="button" className="btn btn-primary" onClick={()=>{
+            // thêm , sửa nhớ tham chiếu vùng nhớ (...clone ra)
+            this.props.updateProduct({...this.state.prodInfo})
+          }}>
             Update
           </button>
         </div>

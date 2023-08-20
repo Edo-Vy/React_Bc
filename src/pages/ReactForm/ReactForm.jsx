@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import FormProduct from "./FormProduct";
 import TableProduct from "./TableProduct";
 
+import axios from "axios";
 export default class ReactForm extends Component {
   state = {
     arrProduct: [
@@ -33,6 +34,20 @@ export default class ReactForm extends Component {
     },
   };
 
+  updatePro = (proUpdate) => {
+    let pro = this.state.arrProduct.find((p) => p.id == proUpdate.id);
+    if (pro) {
+      pro.name = proUpdate.name;
+      pro.price = proUpdate.price;
+      pro.img = proUpdate.img;
+      pro.proType = proUpdate.proType;
+      pro.description = proUpdate.description;
+    }
+    // set lại state
+    this.setState({
+      arrProduct: this.state.arrProduct,
+    });
+  };
   editProduct = (prodClick) => {
     this.setState({
       proEdit: prodClick,
@@ -89,6 +104,7 @@ export default class ReactForm extends Component {
         <FormProduct
           addProduct={this.addPro}
           productEdit={this.state.proEdit}
+          updateProduct={this.updatePro}
         />
         <TableProduct
           arrPro={this.state.arrProduct}
@@ -101,8 +117,25 @@ export default class ReactForm extends Component {
   //  componentDidMount() ~ window.onload()
   componentDidMount() {
     // Hàm này sẽ thực thi sau khi nội dung được render
-    this.setState({
-      arrProduct: this.layStore(),
+    //-- Lấy từ localStore
+    // this.setState({
+    //   arrProduct: this.layStore(),
+    // });
+
+    // -- Lấy từ api
+    let promise = axios({
+      url: "http://svcy.myclass.vn/api/Movie/GetMovie",
+      method: "GET",
+    });
+    // nên dùng arrfun -> this.setState (vì fun ES5 -> this này là của fun đó nên dùng ()=>{} )
+    promise.then((result) => {
+      this.setState({
+        arrProduct: result.data,
+      });
+    });
+
+    promise.catch((err) => {
+      console.log(err);
     });
   }
 }
