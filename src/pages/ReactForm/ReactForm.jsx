@@ -118,24 +118,24 @@ export default class ReactForm extends Component {
   componentDidMount() {
     // Hàm này sẽ thực thi sau khi nội dung được render
     //-- Lấy từ localStore
-    // this.setState({
-    //   arrProduct: this.layStore(),
-    // });
+    this.setState({
+      arrProduct: this.layStore(),
+    });
 
     // -- Lấy từ api
-    let promise = axios({
-      url: "http://svcy.myclass.vn/api/Movie/GetMovie",
-      method: "GET",
-    });
-    // nên dùng arrfun -> this.setState (vì fun ES5 -> this này là của fun đó nên dùng ()=>{} )
-    promise.then((result) => {
-      this.setState({
-        arrProduct: result.data,
-      });
-    });
+    // let promise = axios({
+    //   url: "http://svcy.myclass.vn/api/Movie/GetMovie",
+    //   method: "GET",
+    // });
+    // // nên dùng arrfun -> this.setState (vì fun ES5 -> this này là của fun đó nên dùng ()=>{} )
+    // promise.then((result) => {
+    //   this.setState({
+    //     arrProduct: result.data,
+    //   });
+    // });
 
-    promise.catch((err) => {
-      console.log(err);
-    });
+    // promise.catch((err) => {
+    //   console.log(err);
+    // });
   }
 }
