@@ -62,7 +62,8 @@ function App() {
               <div className="dropdown-menu" aria-labelledby="dropdownId">
                 <NavLink className="dropdown-item" to="/reduxNumber">Demo Number</NavLink>
                 <NavLink className="dropdown-item" to="/reduxChonXe">Demo Chọn Xe</NavLink>
-
+                <NavLink className="dropdown-item" to="/reduxComment">Demo Comment</NavLink>
+               
               </div>
             </li>
           </ul>

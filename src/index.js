@@ -17,6 +17,7 @@ import { Provider } from 'react-redux';
 import { store } from './redux/configStore';
 import DemoTangGiamSL from './pages/DemoRedux/DemoTangGiamSl/DemoTangGiamSL';
 import DemoChonXe from './pages/DemoRedux/DemoChonXe/DemoChonXe';
+import DemoFormComment from './pages/DemoRedux/DemoFormComment/DemoFormComment';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -37,6 +38,7 @@ root.render(
           <Route path='lifecycle' element={<ReactLifecycle />}></Route>
           <Route path='reduxNumber' element={<DemoTangGiamSL />}></Route>
           <Route path='reduxChonXe' element={<DemoChonXe />}></Route>
+          <Route path='reduxComment' element={<DemoFormComment/>}></Route>
 
           {/* Cách 1: tạo 1 trang 404  */}
           {/* <Route path='*' element={<Page404/>}></Route> */}
