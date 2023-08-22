@@ -9,7 +9,14 @@ import { connect } from "react-redux";
 
 class FormComment extends Component {
   handleSubmit = (e) => {
-    e.preventDefaul();
+    e.preventDefault();
+    // Gửi dữ liệu lên redux
+    const action = {
+      type: "HANDLE_SUBMIT",
+      payload: this.props.commentInfo,
+    };
+    // Sử dụng this.props.dispatch gửi action lên store
+    this.props.dispatch(action);
   };
   handleChange = (e) => {
     const { id, value } = e.target;
@@ -26,7 +33,7 @@ class FormComment extends Component {
   render() {
     const { name, content } = this.props.commentInfo;
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <p>Name</p>
           {/* phải có onChange thì mới không warning */}
@@ -48,6 +55,20 @@ class FormComment extends Component {
         </div>
         <div className="form-group mt-3">
           <button className="btn btn-success">Comment</button>
+          <button
+            className="btn btn-success mx-2"
+            onClick={() => {
+              // B1 : tạo ra action update
+              const action = {
+                type: "UPDATE_COMMENT",
+                // payload : this.props.commentInfo,
+              };
+              // B2 :
+              this.props.dispatch(action);
+            }}
+          >
+            Update
+          </button>
         </div>
       </form>
     );
@@ -55,7 +76,7 @@ class FormComment extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    commentInfo: state.commentReducer.commentInfo,
+  commentInfo: state.commentReducer.commentInfo,
 });
 
 export default connect(mapStateToProps)(FormComment);
