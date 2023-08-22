@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.scss';
+// import './index.scss';
+import './assets/scss/style.scss'
 import App from './App';
 
 // Cấu hình react-router-dom
@@ -18,6 +19,7 @@ import { store } from './redux/configStore';
 import DemoTangGiamSL from './pages/DemoRedux/DemoTangGiamSl/DemoTangGiamSL';
 import DemoChonXe from './pages/DemoRedux/DemoChonXe/DemoChonXe';
 import DemoFormComment from './pages/DemoRedux/DemoFormComment/DemoFormComment';
+import DemoBurger from './pages/DemoRedux/DemoBurger/DemoBurger';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -39,6 +41,7 @@ root.render(
           <Route path='reduxNumber' element={<DemoTangGiamSL />}></Route>
           <Route path='reduxChonXe' element={<DemoChonXe />}></Route>
           <Route path='reduxComment' element={<DemoFormComment/>}></Route>
+          <Route path='reduxBurger' element={<DemoBurger/>}></Route>
 
           {/* Cách 1: tạo 1 trang 404  */}
           {/* <Route path='*' element={<Page404/>}></Route> */}

@@ -63,7 +63,8 @@ function App() {
                 <NavLink className="dropdown-item" to="/reduxNumber">Demo Number</NavLink>
                 <NavLink className="dropdown-item" to="/reduxChonXe">Demo Chọn Xe</NavLink>
                 <NavLink className="dropdown-item" to="/reduxComment">Demo Comment</NavLink>
-               
+                <NavLink className="dropdown-item" to="/reduxBurger">Demo Burger</NavLink>
+                
               </div>
             </li>
           </ul>

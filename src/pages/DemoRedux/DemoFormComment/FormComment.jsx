@@ -5,7 +5,7 @@
  */
 
 import React, { Component } from "react";
-import { connect } from "react-redux";
+import { connect, useStore } from "react-redux";
 
 class FormComment extends Component {
   handleSubmit = (e) => {
@@ -32,6 +32,7 @@ class FormComment extends Component {
   };
   render() {
     const { name, content } = this.props.commentInfo;
+    
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
@@ -56,7 +57,7 @@ class FormComment extends Component {
         <div className="form-group mt-3">
           <button className="btn btn-success">Comment</button>
           <button
-            className="btn btn-success mx-2"
+            className="btn btn-success mx-2" type="button"
             onClick={() => {
               // B1 : tạo ra action update
               const action = {

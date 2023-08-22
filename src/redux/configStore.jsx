@@ -2,6 +2,8 @@ import { combineReducers, createStore } from "redux";
 import { numberReducer } from "./reducers/numberReducer";
 import { imgCarReducer } from "./reducers/imgCarReducer";
 import { commentReducer } from "./reducers/commentReducer";
+// export defaul nên ko có {}
+import burgerReducer from "./reducers/burgerReducer";
 
 const rootReducer = combineReducers({
   // Nơi chứa các state của ứng dụng
@@ -9,6 +11,7 @@ const rootReducer = combineReducers({
   number: numberReducer,
   imgCar: imgCarReducer ,
   commentReducer : commentReducer,
+  burgerReducer : burgerReducer,
 });
 
 export const store = createStore(
